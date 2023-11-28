@@ -1,11 +1,8 @@
 {
   "dependencies": {
-    "secrets1": {
-      "type": "secrets"
-    },
     "sqlite1": {
       "type": "sqlite",
-      "connectionId": "ConnectionStrings::Data:SIB.Database.Local.db3"
+      "connectionId": "ConnectionStrings:AppDB"
     }
   }
 }
