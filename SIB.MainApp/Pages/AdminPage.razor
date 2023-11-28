@@ -1,5 +1,16 @@
-﻿<h3>Admin Page</h3>
-<!-- комментарии -->
-@code {
+﻿@page "/admin"
 
+<h3>Admin Page</h3>
+
+<RadzenRow Gap="2rem">
+    <RadzenStack>
+        <RadzenFormField Text="RadzenTextBox" Variant="Variant.Text">
+                    <RadzenTextBox @bind-Value="@textValue" />
+                </RadzenFormField>
+    </RadzenStack>
+</RadzenRow>
+
+@code {
+    [Parameter]
+    public string textValue { get; set; } = "Текст";
 }
