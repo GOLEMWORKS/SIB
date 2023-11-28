@@ -3,14 +3,37 @@
 <h3>Admin Page</h3>
 
 <RadzenRow Gap="2rem">
-    <RadzenStack>
-        <RadzenFormField Text="RadzenTextBox" Variant="Variant.Text">
-                    <RadzenTextBox @bind-Value="@textValue" />
+    <RadzenTemplateForm TItem="Model" Data=@model>
+        <RadzenStack>
+                <RadzenFormField Text="Login" Variant="Variant.Text">
+                    <ChildContent>
+                        <RadzenTextBox @bind-Value="@model.Login" Name="Login"/>
+                    </ChildContent>
+                    <Helper>
+                        <RadzenRequiredValidator Component="Login" Text="Необходим Логин" />
+                    </Helper>
                 </RadzenFormField>
-    </RadzenStack>
+
+                <RadzenFormField Text="Password" Variant="Variant.Text">
+                    <ChildContent>
+                        <RadzenPassword @bind-Value="@model.Pass" Name="Pass"/>
+                    </ChildContent>
+                    <Helper>
+                        <RadzenRequiredValidator Component="Pass" Text="Необходим Пароль"/>
+                    </Helper>
+                </RadzenFormField>
+
+                <RadzenButton ButtonType="ButtonType.Submit" Text="Подтвердить"></RadzenButton>
+            </RadzenStack>
+    </RadzenTemplateForm>
 </RadzenRow>
 
 @code {
-    [Parameter]
-    public string textValue { get; set; } = "Текст";
+    class Model
+    {
+        public string Login { get; set; } = "";
+        public string Pass { get; set; } = "";
+    }
+
+    Model model = new Model();
 }
