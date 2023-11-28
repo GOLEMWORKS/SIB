@@ -1,10 +1,11 @@
 ﻿@page "/admin"
 
-<h3>Admin Page</h3>
+<RadzenRow Gap="2rem" JustifyContent="JustifyContent.Center">
+    <RadzenTemplateForm TItem="Model" Data=@model >
+        <RadzenStack Class="rz-p-sm-12">
 
-<RadzenRow Gap="2rem">
-    <RadzenTemplateForm TItem="Model" Data=@model>
-        <RadzenStack>
+                <h3 style="text-align:center">Admin Page</h3>
+
                 <RadzenFormField Text="Login" Variant="Variant.Text">
                     <ChildContent>
                         <RadzenTextBox @bind-Value="@model.Login" Name="Login"/>
