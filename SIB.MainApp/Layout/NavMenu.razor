@@ -1,7 +1,15 @@
 ﻿<div class="top-row ps-3 navbar navbar-dark">
-    <div class="container-fluid">
-        <!-- Добавление логотипа PNG!-->
-        <a class="navbar-brand" href=""><img src="" alt="BIS"/></a>
+    <div class="container-fluid" style="flex-direction:row">
+            <a class="navbar-brand" href="" style="display:flex;">
+                <div style="padding:3px 5px;">
+                    <img src="logo.png" alt="BIS" style="width:auto; height:30px;"/>
+                </div>
+                <div>
+                    <p style="margin:-5px 0px; font-size:13px;">С - словарь</p>
+                    <p style="margin:-5px 0px; font-size:13px;">И - информационной</p>
+                    <p style="margin:-5px 0px; font-size:13px;">Б - безопасности</p>
+                </div>
+            </a>
         <button title="Navigation menu" class="navbar-toggler" @onclick="ToggleNavMenu">
             <span class="navbar-toggler-icon"></span>
         </button>
