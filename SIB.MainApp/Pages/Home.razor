@@ -14,7 +14,9 @@ else
 				PageSize="4" AllowSorting="true" Data="@filter" TItem="Filter" ColumnWidth="150px">
 		<Columns>
 			<RadzenGridColumn TItem="Filter" Property="FilterID" Title="ID" Width="30px"></RadzenGridColumn>
-			<RadzenGridColumn TItem="Filter" Property="TerminName" Title="Название"></RadzenGridColumn>
+			<RadzenGridColumn TItem="Filter" Property="TerminName" Title="Название">
+				<!-- Здесь должна быть ссылка по TerminName -->
+			</RadzenGridColumn>
 			<RadzenGridColumn TItem="Filter" Property="TerminNameT" Title="Перевод"></RadzenGridColumn>
 			<RadzenGridColumn TItem="Filter" Property="CreateDate" Title="Дата создания">
 				<Template Context="data">
