@@ -1,7 +1,62 @@
 ﻿@page "/Registration"
 
-<h3>Component</h3>
+<RadzenRow Gap="2rem" JustifyContent="JustifyContent.Center">
+    <RadzenTemplateForm TItem="Model" Data=@model>
+        <RadzenStack Class="rz-p-sm-12">
+
+            <h3 style="text-align:center">Регистрация</h3>
+
+            <RadzenFormField Text="E-mail" Variant="Variant.Outlined">
+                <ChildContent>
+                    <RadzenTextBox @bind-Value="@model.Email" Name="Email"/>
+                </ChildContent>
+                <Helper>
+                    <RadzenRequiredValidator Component="Email" Text="Необходима почта" />
+                    <RadzenEmailValidator Component="Email" Text="Укажите действительную почту" />
+                </Helper>
+            </RadzenFormField>
+
+            <RadzenFormField Text="Логин" Variant="Variant.Outlined">
+                <ChildContent>
+                    <RadzenTextBox @bind-Value="@model.Login" Name="Login"/>
+                </ChildContent>
+                <Helper>
+                    <RadzenRequiredValidator Component="Login" Text="Введите логин" />
+                </Helper>
+            </RadzenFormField>
+
+            <RadzenFormField Text="Пароль" Variant="Variant.Outlined">
+                <ChildContent>
+                    <RadzenPassword @bind-Value="@model.Pass" Name="Pass" />
+                </ChildContent>
+                <Helper>
+                    <RadzenRequiredValidator Component="Pass" Text="Введите пароль" />
+                </Helper>
+            </RadzenFormField>
+
+            <RadzenFormField Text="Повторный пароль" Variant="Variant.Outlined">
+                <ChildContent>
+                    <RadzenPassword @bind-Value="@model.RepeatPassword" Name="RepeatPassword" />
+                </ChildContent>
+                <Helper>
+                    <RadzenRequiredValidator Component="RepeatPassword" Text="Повторите пароль" />
+                    <RadzenCompareValidator Visible=@(!string.IsNullOrEmpty(model.RepeatPassword)) Value=@model.Pass Component="RepeatPassword" Text="Пароли не совпадают"></RadzenCompareValidator>
+                </Helper>
+            </RadzenFormField>
+
+            <RadzenButton ButtonType="ButtonType.Submit" Text="Подтвердить"></RadzenButton>
+        </RadzenStack>
+    </RadzenTemplateForm>
+</RadzenRow>
 
 @code {
+    class Model
+    {
+        public string Email { get; set; } = "";
+        public string Login { get; set; } = "";
+        public string Pass { get; set; } = "";
+        public string RepeatPassword { get; set; } = "";
+    }
 
+    Model model = new Model();
 }

@@ -1,12 +1,12 @@
 ﻿@page "/admin"
 
 <RadzenRow Gap="2rem" JustifyContent="JustifyContent.Center">
-    <RadzenTemplateForm TItem="Model" Data=@model >
+    <RadzenTemplateForm TItem="Model" Data=@model>
         <RadzenStack Class="rz-p-sm-12">
 
                 <h3 style="text-align:center">Admin Page</h3>
 
-                <RadzenFormField Text="Login" Variant="Variant.Text">
+                <RadzenFormField Text="Логин" Variant="Variant.Outlined">
                     <ChildContent>
                         <RadzenTextBox @bind-Value="@model.Login" Name="Login"/>
                     </ChildContent>
@@ -15,7 +15,7 @@
                     </Helper>
                 </RadzenFormField>
 
-                <RadzenFormField Text="Password" Variant="Variant.Text">
+            <RadzenFormField Text="Пароль" Variant="Variant.Outlined">
                     <ChildContent>
                         <RadzenPassword @bind-Value="@model.Pass" Name="Pass"/>
                     </ChildContent>
@@ -30,6 +30,7 @@
 </RadzenRow>
 
 @code {
+
     class Model
     {
         public string Login { get; set; } = "";

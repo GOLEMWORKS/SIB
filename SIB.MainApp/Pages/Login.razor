@@ -1,7 +1,41 @@
 ﻿@page "/Login"
 
+<RadzenRow Gap="2rem" JustifyContent="JustifyContent.Center">
+    <RadzenTemplateForm TItem="Model" Data=@model>
+        <RadzenStack Class="rz-p-sm-12">
 
+            <h3 style="text-align:center">Авторизация</h3>
+
+            <RadzenFormField Text="Логин" Variant="Variant.Outlined">
+                <ChildContent>
+                    <RadzenTextBox @bind-Value="@model.Login" Name="Login" />
+                </ChildContent>
+                <Helper>
+                    <RadzenRequiredValidator Component="Login" Text="Необходим Логин" />
+                </Helper>
+            </RadzenFormField>
+
+            <RadzenFormField Text="Пароль" Variant="Variant.Outlined">
+                <ChildContent>
+                    <RadzenPassword @bind-Value="@model.Pass" Name="Pass" />
+                </ChildContent>
+                <Helper>
+                    <RadzenRequiredValidator Component="Pass" Text="Необходим Пароль" />
+                </Helper>
+            </RadzenFormField>
+
+            <RadzenButton ButtonType="ButtonType.Submit" Text="Подтвердить"></RadzenButton>
+            <NavLink href="/ResetPassword">Забыли пароль?</NavLink>
+        </RadzenStack>
+    </RadzenTemplateForm>
+</RadzenRow>
 
 @code {
+    class Model
+    {
+        public string Login { get; set; } = "";
+        public string Pass { get; set; } = "";
+    }
 
+    Model model = new Model();
 }
