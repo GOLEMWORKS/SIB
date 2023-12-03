@@ -15,8 +15,9 @@ else
 		<Columns>
 			<RadzenGridColumn TItem="Filter" Property="FilterID" Title="ID" Width="30px"></RadzenGridColumn>
 			<RadzenGridColumn TItem="Filter" Property="TerminName" Title="Название">
-				<!-- Сделать гиперссылку термина (Ангийские)-->
-
+				<Template>
+					<a href="/${Filter.TerminName}" target="_blank">${Filter.TerminName}</a>
+				</Template>
 			</RadzenGridColumn>
 			<RadzenGridColumn TItem="Filter" Property="TerminNameT" Title="Перевод"></RadzenGridColumn>
 			<RadzenGridColumn TItem="Filter" Property="CreateDate" Title="Дата создания">
@@ -35,4 +36,5 @@ else
 	{
 		filter = await Task.Run(() => FilterService.FilterList());
 	}
+
 }
