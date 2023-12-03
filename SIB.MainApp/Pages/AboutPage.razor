@@ -4,7 +4,7 @@
 
 <h1>Главная страница</h1>
 
-@if (product != null)
+@if (product == null)
 {
 	<p>Loading.....</p>
 }
@@ -26,12 +26,12 @@ else
 }
 
 @code {
-	IEnumerable<Product> product;
+	IEnumerable<Product>? product;
 
-	public AboutPage(IEnumerable<Product> product)
-	{
-		this.product = product;
-	}
+	// public AboutPage(IEnumerable<Product> product)
+	// {
+	// 	this.product = product;
+	// }
 
 	protected override async Task OnInitializedAsync()
 	{
