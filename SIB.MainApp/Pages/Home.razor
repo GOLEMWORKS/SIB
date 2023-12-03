@@ -1,35 +1,38 @@
 ﻿@page "/"
 @using SIB.MainApp.Data
-@inject ProductService productService
+@inject FilterService FilterService
 
 <h1>Главная страница</h1>
 
-@if (product != null)
+@if (filter == null)
 {
 	<p>Loading.....</p>
 }
 else
 {
 	<RadzenGrid AllowFiltering="true" FilterCaseSensitivity="FilterCaseSensitivity.CaseInsensitive" AllowPaging="true"
-				PageSize="4" AllowSorting="true" Data="@product" TItem="Product" ColumnWidth="150px">
+				PageSize="4" AllowSorting="true" Data="@filter" TItem="Filter" ColumnWidth="150px">
 		<Columns>
-			<RadzenGridColumn TItem="Product" Property="ProductID" Title="ProductID"></RadzenGridColumn>
-			<RadzenGridColumn TItem="Product" Property="ProductName" Title="ProductName"></RadzenGridColumn>
-			<RadzenGridColumn TItem="Product" Property="PurchaseDate" Title="PurchaseDate">
+			<RadzenGridColumn TItem="Filter" Property="FilterID" Title="ID" Width="30px"></RadzenGridColumn>
+			<RadzenGridColumn TItem="Filter" Property="TerminName" Title="Название">
+				<!-- Сделать гиперссылку термина (Анг.)-->
+
+			</RadzenGridColumn>
+			<RadzenGridColumn TItem="Filter" Property="TerminNameT" Title="Перевод"></RadzenGridColumn>
+			<RadzenGridColumn TItem="Filter" Property="CreateDate" Title="Дата создания">
 				<Template Context="data">
-					@String.Format("{0:d}", data.PurchaseDate)
+					@String.Format("{0:d}", data.CreateDate)
 				</Template>
 			</RadzenGridColumn>
-			<RadzenGridColumn TItem="Product" Property="Price" Title="Price"></RadzenGridColumn>
 		</Columns>
 	</RadzenGrid>
 }
 
 @code {
-	IEnumerable<Product>? product;
+	IEnumerable<Filter>? filter;
 
 	protected override async Task OnInitializedAsync()
 	{
-		product = await Task.Run(() => productService.ProductList());
+		filter = await Task.Run(() => FilterService.FilterList());
 	}
 }
